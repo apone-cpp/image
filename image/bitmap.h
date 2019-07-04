@@ -174,13 +174,13 @@ public:
 
     T* data() { return &(*pixels)[0]; }
 
-    basic_bitmap flip()
+    basic_bitmap flip() const
     {
         basic_bitmap result(w, h);
         auto* target = result.data();
         int32_t l = sizeof(T) * w;
         for (int32_t y = 0; y < h; y++)
-            std::memcpy(&(*pixels)[(h - y - 1) * w], &(*target)[y * w], l);
+            std::memcpy(&(*pixels)[(h - y - 1) * w], &(target)[y * w], l);
         return result;
     }
 
