@@ -1,7 +1,7 @@
-#ifndef IMAGE_IMAGE_H
-#define IMAGE_IMAGE_H
+#pragma once
 
 #include "bitmap.h"
+
 #include <stdexcept>
 #include <vector>
 
@@ -24,4 +24,3 @@ void save_png(bitmap bitmap, const std::string& path);
 
 } // namespace image
 
-#endif // IMAGE_IMAGE_H

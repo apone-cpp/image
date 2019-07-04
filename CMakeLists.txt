@@ -1,14 +1,8 @@
-cmake_minimum_required(VERSION 2.8.4)
-project(cpp-mods.image)
+cmake_minimum_required(VERSION 3.5)
+project(apone-cpp.image)
 
-set(SOURCE_FILES image.cpp lodepng.cpp)
-#packer.cpp)
+set(SOURCE_FILES image/image.cpp image/lodepng.cpp image/packer.cpp)
 
-
-#find_package(PNG REQUIRED)
-#include_directories(${PNG_INCLUDE_DIRS})
-#add_definitions(${PNG_DEFINITIONS})
-
-add_library(image ${SOURCE_FILES})
-#target_link_libraries(image ${PNG_LIBRARIES})
-target_include_directories(image PRIVATE ..)
+add_library(image STATIC ${SOURCE_FILES})
+target_link_libraries(image PRIVATE coreutils)
+target_include_directories(image PUBLIC .)

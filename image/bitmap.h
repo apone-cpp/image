@@ -78,13 +78,9 @@ template <typename T = uint32_t> class basic_bitmap
     };
 
 public:
-    splitter split(int32_t w, int32_t h) const
-    {
-        return splitter(*this, w, h);
-    }
+    splitter split(int32_t w, int32_t h) const { return splitter(*this, w, h); }
 
-    basic_bitmap() : w(0), h(0)
-    {}
+    basic_bitmap() : w(0), h(0) {}
 
     basic_bitmap(int32_t width, int32_t height,
                  std::function<T(int32_t, int32_t)> const& f)
@@ -142,30 +138,15 @@ public:
             }
     }
 
-    basic_bitmap clone()
-    {
-        return basic_bitmap(w, h, &(*pixels)[0]);
-    }
+    basic_bitmap clone() { return basic_bitmap(w, h, &(*pixels)[0]); }
 
-    T& operator[](const int64_t& i)
-    {
-        return (*pixels)[i];
-    }
+    T& operator[](const int64_t& i) { return (*pixels)[i]; }
 
-    T operator[](const int64_t& i) const
-    {
-        return (*pixels)[i];
-    }
+    T operator[](const int64_t& i) const { return (*pixels)[i]; }
 
-    typename std::vector<T>::iterator begin()
-    {
-        return pixels->begin();
-    };
+    typename std::vector<T>::iterator begin() { return pixels->begin(); };
 
-    typename std::vector<T>::iterator end()
-    {
-        return pixels->end();
-    };
+    typename std::vector<T>::iterator end() { return pixels->end(); };
 
     //! Clear bitmap to given color
     void clear(uint32_t color = 0)
@@ -191,10 +172,7 @@ public:
         return dest;
     }
 
-    T* data()
-    {
-        return &(*pixels)[0];
-    }
+    T* data() { return &(*pixels)[0]; }
 
     basic_bitmap flip()
     {
@@ -206,18 +184,9 @@ public:
         return result;
     }
 
-    int32_t width() const
-    {
-        return w;
-    }
-    int32_t height() const
-    {
-        return h;
-    }
-    int64_t size() const
-    {
-        return w * h;
-    }
+    int32_t width() const { return w; }
+    int32_t height() const { return h; }
+    int64_t size() const { return w * h; }
 
 private:
     std::shared_ptr<std::vector<T>> pixels;
